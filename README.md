@@ -19,9 +19,24 @@
 
 ## 起動
 
-```bash
+コマンドは、このゲームのフォルダの中で実行する。`C:\Users\あなた` のようなホームでは `package.json` が無く、npm はすぐ止まる。
+
+まだ手元に無い場合は、先にこのブランチを取る。
+
+```bat
+cd /d %USERPROFILE%
+git clone --branch cursor/infinite-swipe-game-bf45 https://github.com/Mizukichi404/-PseudoMoneyGame.git
+cd /d "%USERPROFILE%\-PseudoMoneyGame"
 npm test
 npm start
 ```
 
-`npm start` のあと、ブラウザで http://127.0.0.1:8765 を開く。
+すでにクローンしてあるなら、そのフォルダへ移動してから同じ二つのコマンドを実行する。
+
+```bat
+cd /d "%USERPROFILE%\-PseudoMoneyGame"
+npm test
+npm start
+```
+
+`npm start` は Node だけで http://127.0.0.1:8765 を開く。表示された URL をブラウザで開く。止めるときはそのウィンドウで Ctrl+C。
