@@ -1,0 +1,9 @@
+{
+  "name": "swipe-narikin",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/economy.test.js",
+    "start": "node scripts/serve.js"
+  }
+}

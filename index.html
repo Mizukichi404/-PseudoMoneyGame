@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#120d09" />
+    <title>スワイプ成金</title>
+    <meta name="description" content="札を無限に弾いて、ゲーム内の円を稼ぐ。" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23e2b340'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%23140e09' stroke-width='2'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="manual">
+        <p class="eyebrow">遊び方</p>
+        <h2>札は終わらない</h2>
+        <p>弾いた方向で、お金の入り方が変わる。速く弾くと増額、間を空けずに続けるとコンボが太る。矢印キーでも弾ける。</p>
+        <ul>
+          <li><b>右 · 即金</b>その場で受け取る。</li>
+          <li><b>左 · 交渉</b>うまくいけば跳ねる。失敗すると薄い。</li>
+          <li><b>上 · 長期</b>数枚あとで、まとめて入る。</li>
+          <li><b>下 · 見送り</b>少額。コンボは残る。罠はこれで避ける。</li>
+        </ul>
+        <p>「特価」の札は話がうますぎる。右で掴むと損をする。極上と大穴は厚い。</p>
+        <p>稼いだ円は店で指、眼、看板、秘書に変わる。秘書は画面を閉じていても、少しだけ稼ぎ続ける。</p>
+        <p>まとまった金は伝説入りで名声に変えられる。名声は消えない。</p>
+      </aside>
+
+      <div class="app">
+        <header class="top">
+          <div class="brand">
+            <span class="seal" aria-hidden="true">成</span>
+            <div>
+              <p class="eyebrow">無限スワイプ</p>
+              <h1>スワイプ成金</h1>
+            </div>
+          </div>
+          <div class="top-actions">
+            <button id="sound-btn" type="button" aria-pressed="true">音 オン</button>
+            <p id="fame">名声 0</p>
+          </div>
+        </header>
+
+        <section class="wallet" aria-label="財布">
+          <p id="yen" aria-live="polite">¥0</p>
+          <div class="meta">
+            <span id="lifetime">生涯 ¥0</span>
+            <span id="swipes">0 枚</span>
+            <span id="combo" data-hot="0">コンボ —</span>
+          </div>
+          <div class="combo-track" aria-hidden="true"><div id="combo-fill"></div></div>
+          <ul id="vesting" hidden></ul>
+          <p id="last-action" aria-live="polite">札は尽きない。はじけば、財布が鳴る。</p>
+          <p id="banner" class="banner" hidden></p>
+        </section>
+
+        <main id="stage">
+          <p class="watermark" aria-hidden="true">円</p>
+          <div class="zones" aria-hidden="true">
+            <span class="zone up" data-dir="up">長期</span>
+            <span class="zone down" data-dir="down">見送り</span>
+            <span class="zone left" data-dir="left">交渉</span>
+            <span class="zone right" data-dir="right">即金</span>
+          </div>
+          <div id="stack" role="group" aria-label="いまの札"></div>
+          <canvas id="fx" aria-hidden="true"></canvas>
+          <div id="floats" aria-hidden="true"></div>
+          <p id="hint">カードをはじくか、矢印を押す</p>
+        </main>
+
+        <footer class="controls">
+          <div class="pad" aria-label="スワイプ">
+            <button type="button" data-dir="up">上<br />長期</button>
+            <button type="button" data-dir="left">左<br />交渉</button>
+            <button type="button" data-dir="down">下<br />見送り</button>
+            <button type="button" data-dir="right">右<br />即金</button>
+          </div>
+          <button id="shop-btn" type="button">店を開く</button>
+        </footer>
+      </div>
+
+      <aside class="ledger-panel">
+        <section>
+          <h2>台帳</h2>
+          <ol id="ledger"></ol>
+        </section>
+        <section>
+          <h2>記録</h2>
+          <ul id="stats"></ul>
+        </section>
+      </aside>
+    </div>
+
+    <dialog id="shop">
+      <div class="sheet">
+        <header>
+          <div>
+            <p class="eyebrow">強化</p>
+            <h2>店</h2>
+          </div>
+          <button id="shop-close" type="button">閉じる</button>
+        </header>
+        <div id="upgrade-list"></div>
+        <section id="prestige-box" class="prestige-box"></section>
+        <button id="reset-btn" type="button" class="ghost">記録を消す</button>
+      </div>
+    </dialog>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
