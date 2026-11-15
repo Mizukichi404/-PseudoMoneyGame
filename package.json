@@ -1,0 +1,9 @@
+{
+  "name": "swipe-narikin",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/economy.test.js",
+    "start": "python3 -m http.server 8765 --bind 127.0.0.1"
+  }
+}
